@@ -1,12 +1,12 @@
 package org.example.service;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.example.entities.Asignatura;
 import org.example.entities.Rol;
 import org.example.entities.Usuario;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class NotaServiceTest {
 
@@ -42,8 +42,11 @@ class NotaServiceTest {
     Usuario estudiante = new Usuario("Juan", "Perez", Rol.ESTUDIANTE);
 
     // No lo inscribimos, por lo que debe fallar
-    assertThrows(IllegalStateException.class, () -> {
-      notaService.publicarNota(estudiante, asignatura, 8.0);
-    }, "Debe lanzar excepción si el estudiante no está inscripto");
+    assertThrows(
+        IllegalStateException.class,
+        () -> {
+          notaService.publicarNota(estudiante, asignatura, 8.0);
+        },
+        "Debe lanzar excepción si el estudiante no está inscripto");
   }
 }

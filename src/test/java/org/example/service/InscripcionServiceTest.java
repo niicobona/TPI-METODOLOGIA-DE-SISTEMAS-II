@@ -1,12 +1,12 @@
 package org.example.service;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.example.entities.Asignatura;
 import org.example.entities.Rol;
 import org.example.entities.Usuario;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class InscripcionServiceTest {
 
@@ -37,9 +37,12 @@ class InscripcionServiceTest {
 
     inscripcionService.inscribir(estudiante, asignatura);
 
-    assertThrows(IllegalStateException.class, () -> {
-      inscripcionService.inscribir(estudiante, asignatura);
-    }, "Debería lanzar IllegalStateException si el estudiante ya está inscripto");
+    assertThrows(
+        IllegalStateException.class,
+        () -> {
+          inscripcionService.inscribir(estudiante, asignatura);
+        },
+        "Debería lanzar IllegalStateException si el estudiante ya está inscripto");
   }
 
   @Test

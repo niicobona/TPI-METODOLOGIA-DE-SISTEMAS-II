@@ -13,9 +13,9 @@ class UsuarioTest {
     String nombreCompleto = usuario.getNombreCompleto();
 
     assertEquals(
-            "Maria Gomez",
-            nombreCompleto,
-            "El nombre completo debe formarse uniendo nombre y apellido con un espacio");
+        "Maria Gomez",
+        nombreCompleto,
+        "El nombre completo debe formarse uniendo nombre y apellido con un espacio");
   }
 
   @Test
@@ -25,12 +25,15 @@ class UsuarioTest {
     Usuario usuario3 = new Usuario("Carlos", "Ruiz", Rol.ESTUDIANTE);
 
     assertEquals(
-            usuario1,
-            usuario2,
-            "Dos usuarios con el mismo nombre, apellido y rol deben ser considerados iguales por equals");
+        usuario1,
+        usuario2,
+        "Dos usuarios con el mismo nombre, apellido y rol deben ser considerados iguales por equals");
 
     // Validamos también que el hashCode coincida cuando los usuarios son iguales
-    assertEquals(usuario1.hashCode(), usuario2.hashCode(), "El hashCode debe ser igual para usuarios equivalentes");
+    assertEquals(
+        usuario1.hashCode(),
+        usuario2.hashCode(),
+        "El hashCode debe ser igual para usuarios equivalentes");
 
     // Validamos que usuarios distintos no sean iguales
     assertNotEquals(usuario1, usuario3, "Dos usuarios con datos distintos no deben ser iguales");

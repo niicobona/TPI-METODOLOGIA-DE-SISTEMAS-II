@@ -195,7 +195,7 @@ public class Main {
       asignaturaService.cambiarTurno(profesor, nombreAsignatura, nuevoTurno);
       System.out.println("Asignatura cambiada correctamente.");
 
-    } catch (IllegalStateException e) {
+    } catch (IllegalArgumentException e) {
       System.out.println(e.getMessage());
     }
   }
