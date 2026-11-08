@@ -1,5 +1,8 @@
 plugins {
     id 'java'
+    id 'pmd'
+    id 'jacoco' // <-- 1. Añadimos el plugin de JaCoCo
+    id 'com.diffplug.spotless' version '6.25.0'
 }
 
 group = 'org.example'
@@ -17,4 +20,35 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    // Aseguramos que JaCoCo recopile los datos durante la ejecución de los tests
+    finalizedBy jacocoTestReport
+}
+
+// Configuración de los reportes de Cobertura
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.required = false
+        csv.required = false
+        html.required = true // Genera una interfaz visual detallada en HTML
+    }
+}
+
+pmd {
+    toolVersion = '7.0.0'
+    ruleSets = [
+            'category/java/errorprone.xml',
+            'category/java/bestpractices.xml'
+    ]
+}
+
+tasks.withType(Pmd).configureEach {
+    exclude '**/org/example/Main.java'
+}
+
+spotless {
+    java {
+        target 'src/*/java/**/*.java'
+        googleJavaFormat()
+    }
 }

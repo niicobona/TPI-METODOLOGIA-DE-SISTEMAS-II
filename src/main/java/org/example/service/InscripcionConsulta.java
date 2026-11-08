@@ -7,6 +7,5 @@ import org.example.entities.Usuario;
 // Permite que NotaService dependa de un contrato y no de una implementación concreta.
 public interface InscripcionConsulta {
 
-    boolean estaInscripto(Usuario estudiante, Asignatura asignatura);
-
+  boolean estaInscripto(Usuario estudiante, Asignatura asignatura);
 }
